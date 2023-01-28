@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StoreService } from './store.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-portfolio';
+  
+  constructor(public store: StoreService){
+  }
 }
