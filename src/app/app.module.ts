@@ -8,6 +8,7 @@ import { ButtonComponent } from './button/button.component';
 import { PageLoaderComponent } from './page-loader/page-loader.component';
 import { HeaderComponent } from './header/header.component';
 import { DataSyncComponent } from './data-sync/data-sync.component';
+import { MagneticTextComponent } from './magnetic-text/magnetic-text.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DataSyncComponent } from './data-sync/data-sync.component';
     ButtonComponent,
     PageLoaderComponent,
     HeaderComponent,
-    DataSyncComponent
+    DataSyncComponent,
+    MagneticTextComponent
   ],
   imports: [
     BrowserModule,
