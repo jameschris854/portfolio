@@ -121,7 +121,5 @@ export class GsapUtils {
         }
         el.appendChild(node)
     })
-    
-    console.log(arr)
   }
 }

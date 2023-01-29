@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+// @ts-nocheck
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { GsapUtils } from 'src/utils/gsapUtils/gsap-utils';
 import { StoreService } from '../store.service';
@@ -9,23 +11,19 @@ import { StoreService } from '../store.service';
   encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
-  
 
-  constructor(public store: StoreService) {
+  constructor(public store: StoreService, private router :Router) {
   }
 
   ngOnInit(): void {
-      GsapUtils.splitText('.big-text-loop-container')
-      const bigTextloopTl = GsapUtils.horizontalLoop(gsap.utils.toArray('.big-text-loop-container > span'),{paused:true,repeat:-1})
-      this.store.pageTransitionTimeline.set('.app-container',{autoAlpha: 0,marginTop:250,top:250},0)
-      this.store.pageTransitionTimeline.set('.app-container-wrapper',{overflowY:'hidden'},0)
-      this.store.pageTransitionTimeline.to('.app-container',{autoAlpha: 1,duration:0.5,marginTop:0,top:0},"loadPage")
-      this.store.pageTransitionTimeline.to('.app-container-wrapper',{duration: 0.5,overflowY:'auto'},"loadPage")
-      this.store.pageTransitionTimeline.eventCallback("onComplete",() => {
+      gsap.set('.app-container',{autoAlpha: 0,marginTop:250,top:250})
+      gsap.set('.app-container-wrapper',{overflowY:'hidden'})
+      gsap.to('.app-container',{autoAlpha: 1,duration:0.5,marginTop:0,top:0,delay:1.6})
+      gsap.to('.app-container-wrapper',{duration: 0.5,overflowY:'auto',delay:1.6}).eventCallback("onComplete",() => {
+        GsapUtils.splitText('.big-text-loop-container')
+        const bigTextloopTl = GsapUtils.horizontalLoop(gsap.utils.toArray('.big-text-loop-container > span'),{paused:true,repeat:-1})
         bigTextloopTl.play(-0.5)
       })
   }
 
-  animateMount = () => {
-  }
 }

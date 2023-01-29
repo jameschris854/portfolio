@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import gsap from 'gsap';
 import { Observer } from 'gsap/all';
 import { StoreService } from '../store.service';
@@ -10,6 +10,7 @@ import { StoreService } from '../store.service';
 })
 export class ButtonComponent implements OnInit {
 
+  @Input() buttonColor!: string;
   isButtonFocused: boolean = false;
 
   constructor(public store: StoreService) { 

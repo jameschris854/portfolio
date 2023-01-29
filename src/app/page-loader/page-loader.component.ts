@@ -9,7 +9,7 @@ import { StoreService } from '../store.service';
 export class PageLoaderComponent implements OnInit {
 
 
-  constructor(public store: StoreService) { 
+  constructor(public store: StoreService) {
     store.pageTransitionChange.subscribe((value) => {
       console.log('value changed',value)
       this.animate()
@@ -22,11 +22,9 @@ export class PageLoaderComponent implements OnInit {
   animate = () => {
     this.store.pageTransitionTimeline.set(".page-loader-wrapper",{
       pointerEvents:"all"
-    }).set('.page-loader-round',{
-      top:window.innerHeight,
-      borderRadius:0
     }).set('.page-loader-round-container',{
-      top:'120vh'
+      top:'120vh',
+      borderRadius:0
     }).set('.page-loader-round-content > div',{
       opacity:0,
       marginTop:150

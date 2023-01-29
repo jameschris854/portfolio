@@ -3,4 +3,32 @@
     color: white;
     font-weight: 450;
     padding: 16px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .menu-container{
+        display: flex;
+    }
+    .header-left{
+        align-self: center;  
+        font-size: 16px;
+        padding-left: 20px;
+        display: flex;
+        flex-direction: row;
+        .symbol{
+            padding-right: 3px;
+        }
+        .content-container{
+            overflow: hidden;
+            width: 120px;
+            white-space: nowrap;
+            position: relative;
+            cursor: pointer;
+            .content{
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+    }
 }

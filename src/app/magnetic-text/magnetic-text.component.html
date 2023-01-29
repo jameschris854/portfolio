@@ -1,1 +1,8 @@
-<p>magnetic-text works!</p>
+<div [ngClass]="['button-wrapper', uid]" (click)="handleClick()">
+    <div [ngClass]="['button', uid]">
+        <div [ngClass]="['button-text', uid]">
+            {{content}}
+        </div>
+        <span [ngClass]="['dot', uid]"></span>
+    </div>
+</div>

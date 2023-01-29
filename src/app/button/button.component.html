@@ -1,10 +1,9 @@
 <div class="button-wrapper" (click)="handleClick()">
-    <div class="button">
+    <div class="button" [ngStyle]="{'background-color': buttonColor}">
         <div class="button-text">
             Get in touch
         </div>
         <div class="button-wave">
-            {{isButtonFocused}}
         </div>
     </div>
 </div>

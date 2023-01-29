@@ -1,4 +1,13 @@
 <div class="header-container">
-    <div class="header-left"><span>©</span> Code by James Christopher</div>
-    <div class="menu-container"></div>
+    <div class="header-left">
+        <span class="symbol">©</span>
+        <div class="content-container" (click)="handleNameClick()">
+            <span class="content">Code by James Chris</span>
+        </div>
+    </div>
+    <div class="menu-container">
+        <app-magnetic-text [uid]="'w1'" [content]="'Work'"></app-magnetic-text>
+        <app-magnetic-text [uid]="'A2'" [content]="'About'"></app-magnetic-text>
+        <app-magnetic-text [uid]="'C3'" [content]="'Contact'"></app-magnetic-text>
+    </div>
 </div>
