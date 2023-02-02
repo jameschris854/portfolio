@@ -9,6 +9,10 @@ import { PageLoaderComponent } from './page-loader/page-loader.component';
 import { HeaderComponent } from './header/header.component';
 import { DataSyncComponent } from './data-sync/data-sync.component';
 import { MagneticTextComponent } from './magnetic-text/magnetic-text.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
+import { MenuItemComponent } from './side-menu/menu-item/menu-item.component';
+import { FloatingMenuButtonComponent } from './floating-menu-button/floating-menu-button.component';
+import { WorkPageComponent } from './work-page/work-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { MagneticTextComponent } from './magnetic-text/magnetic-text.component';
     PageLoaderComponent,
     HeaderComponent,
     DataSyncComponent,
-    MagneticTextComponent
+    MagneticTextComponent,
+    SideMenuComponent,
+    MenuItemComponent,
+    FloatingMenuButtonComponent,
+    WorkPageComponent,
   ],
   imports: [
     BrowserModule,

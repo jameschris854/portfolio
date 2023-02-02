@@ -14,6 +14,10 @@ body{
     height: inherit;
     width: inherit;
     position: inherit;
+    .placeholder-content{
+        width: 100%;
+        height: 3000px;
+    }
 }
 
 .big-text-loop-container{

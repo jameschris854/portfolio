@@ -6,8 +6,11 @@
         </div>
     </div>
     <div class="menu-container">
-        <app-magnetic-text [uid]="'w1'" [content]="'Work'"></app-magnetic-text>
-        <app-magnetic-text [uid]="'A2'" [content]="'About'"></app-magnetic-text>
-        <app-magnetic-text [uid]="'C3'" [content]="'Contact'"></app-magnetic-text>
+        <app-magnetic-text 
+        *ngFor="let item of menuList"
+        [uid]="item.id" 
+        [content]="item.content" 
+        [handleMenuClick]="handleMenuClick.bind(this,item)"
+        ></app-magnetic-text>
     </div>
 </div>

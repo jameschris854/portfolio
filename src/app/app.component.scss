@@ -7,3 +7,11 @@
     height: 100vh;
     width: 100vw;
 }
+
+.floating-menu-container{
+    right: 16px;
+    position: absolute;
+    z-index: 200;
+    width: fit-content;
+    height: fit-content;
+}

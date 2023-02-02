@@ -1,17 +1,16 @@
-import { StoreService } from './../store.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { StoreService } from 'src/app/store.service';
 
 @Component({
-  selector: 'app-magnetic-text',
-  templateUrl: './magnetic-text.component.html',
-  styleUrls: ['./magnetic-text.component.scss']
+  selector: 'app-menu-item',
+  templateUrl: './menu-item.component.html',
+  styleUrls: ['./menu-item.component.scss']
 })
-export class MagneticTextComponent implements OnInit {
+export class MenuItemComponent implements OnInit {
 
   isButtonFocused: boolean = false;
   @Input() content!: string
   @Input() uid!: string
-  @Input() handleMenuClick!: any
 
   constructor(public store : StoreService) { }
 
@@ -79,5 +78,4 @@ export class MagneticTextComponent implements OnInit {
   handleClick = () => {
     this.store.startPageTransition(`${this.uid}`,this.content)
   }
-
 }

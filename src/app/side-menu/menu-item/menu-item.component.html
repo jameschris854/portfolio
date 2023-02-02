@@ -1,8 +1,8 @@
-<div [ngClass]="['button-wrapper', uid]" (click)="handleMenuClick()">
+<div [ngClass]="['button-wrapper', uid]" (click)="handleClick()">
     <div [ngClass]="['button', uid]">
+        <span [ngClass]="['dot', uid]"></span>
         <div [ngClass]="['button-text', uid]">
             {{content}}
         </div>
-        <span [ngClass]="['dot', uid]"></span>
     </div>
 </div>

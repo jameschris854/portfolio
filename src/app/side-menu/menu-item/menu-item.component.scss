@@ -1,14 +1,11 @@
 .button-wrapper{
+    width: fit-content;
     padding: 20px;
 }
 
 .button{
     position: relative;
-    width: 300px;
-    height: 300px;
     color: #ffffff;
-    font-weight: bold;
-    font-size: larger;
     padding: 16px;
     border-radius: 50%;
     display: flex;
@@ -16,22 +13,21 @@
     align-items: center;
     cursor: pointer;
     overflow: hidden;
-    font-family: monospace;
+    flex-direction: row;
 
     .button-text{
         pointer-events: none;
-        z-index: 2,
+        font-weight: bold;
+        z-index: 2;
+        font-size: calc(clamp(3.25em, 5vw, 4em) * .875);
+        font-family: sans-serif;
     }
-
-    .button-wave{
-        position: absolute;
-        background-color: #334bd3;
-        width: 150%;
-        height: 200%;
-        opacity: 0.5;
+    .dot{
+        width: 15px;
+        height: 15px;
+        background: #ffffff;
         border-radius: 50%;
-        z-index: 1;
-        pointer-events: none;
+        transform: scale(0);
+        margin-right: 8px;
     }
-
 }

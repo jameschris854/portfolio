@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { StoreService } from '../store.service';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private route:Router) { }
+  menuList = [
+    {
+      id:"w1",
+      content: "Work",
+      navigateTo: "work"
+    },
+    {
+      id:"A2",
+      content: "About",
+      navigateTo: "about"
+    },
+    {
+      id:"C3",
+      content: "Contact",
+      navigateTo: "contact"
+    }
+  ]
+
+  constructor(private route:Router,public store: StoreService) { }
 
   ngOnInit(): void {
-    gsap.registerEffect(Observer)
+    gsap.registerEffect([Observer,ScrollTrigger])
     Observer.create({
       target:'.header-left',
       onHover:() => {
@@ -33,4 +52,8 @@ export class HeaderComponent implements OnInit {
     this.route.navigate([''])
   }
 
+  handleMenuClick = (item:typeof this.menuList[0]) => {
+    console.log(item)
+    this.store.startPageTransition(item.navigateTo,item.content)
+  } 
 }

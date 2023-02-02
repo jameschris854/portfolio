@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 
 export class StoreService {
 
+  // PageTransition
   pageTransition : boolean = false
   pageTransitionChange :  Subject<boolean> = new Subject<boolean>();
   pageTransitionContent = ""
@@ -16,11 +17,19 @@ export class StoreService {
     duration:0.4
   }})
 
+  //Menu
+  isMenuVisible: boolean = false
+  menuSubject: Subject<boolean> = new Subject<boolean>();
+
   constructor(private router: Router) { 
     this.pageTransitionChange.subscribe((value) => {
       this.pageTransition = value
     });
     this.pageTransitionTimeline.addLabel("loadPage",1.8)
+
+    this.menuSubject.subscribe((val) => {
+      this.isMenuVisible = val
+    })
   }
 
   startPageTransition = (toPage:string,content:string) => {
@@ -33,4 +42,11 @@ export class StoreService {
     this.pageTransitionChange.next(false)
   }
 
+  showMenu = () => {
+    this.menuSubject.next(true)
+  }
+
+  hideMenu = () => {
+    this.menuSubject.next(false)
+  }
 }
