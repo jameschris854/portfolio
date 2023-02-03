@@ -11,9 +11,7 @@ export class DataSyncComponent implements OnInit {
   constructor(public store:StoreService) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.store.startPageTransition('home',"jameschris")
-    }, 1000);
+    this.store.startPageTransition('home',"jameschris")
   }
 
 }

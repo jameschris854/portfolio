@@ -1,6 +1,5 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +11,7 @@ export class StoreService {
   pageTransition : boolean = false
   pageTransitionChange :  Subject<boolean> = new Subject<boolean>();
   pageTransitionContent = ""
+  pageTransitionTargetPage = ""
   pageTransitionTimeline = gsap.timeline({defaults:{
     ease:"slow(0.7, 0.7, false)",
     duration:0.4
@@ -21,12 +21,14 @@ export class StoreService {
   isMenuVisible: boolean = false
   menuSubject: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private router: Router) { 
+  constructor() { 
     this.pageTransitionChange.subscribe((value) => {
       this.pageTransition = value
     });
     this.pageTransitionTimeline.addLabel("loadPage",1.8)
-
+    this.pageTransitionTimeline.eventCallback("onComplete",(e) => {
+      this.pageTransitionChange.next(false)
+    })
     this.menuSubject.subscribe((val) => {
       this.isMenuVisible = val
     })
@@ -34,12 +36,8 @@ export class StoreService {
 
   startPageTransition = (toPage:string,content:string) => {
     this.pageTransitionContent = content
-    this.router.navigate([`/${toPage}`])
+    this.pageTransitionTargetPage = toPage
     this.pageTransitionChange.next(true)
-  }
-
-  stopPageTransition = () => {
-    this.pageTransitionChange.next(false)
   }
 
   showMenu = () => {

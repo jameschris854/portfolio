@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StoreService } from '../store.service';
 
 @Component({
@@ -7,12 +8,14 @@ import { StoreService } from '../store.service';
   styleUrls: ['./page-loader.component.scss']
 })
 export class PageLoaderComponent implements OnInit {
+  
 
-
-  constructor(public store: StoreService) {
+  constructor(public store: StoreService,private router: Router,private NgZone: NgZone) {
     store.pageTransitionChange.subscribe((value) => {
       console.log('value changed',value)
-      this.animate()
+      if(value){
+        this.animate()
+      }
     });
   }
 
@@ -31,11 +34,13 @@ export class PageLoaderComponent implements OnInit {
     }).set(['.page-loader-round-bottom','.page-loader-round-top'],{
       height:'0vh'
     })
-    
     this.store.pageTransitionTimeline.to('.page-loader-round-top',{
       height:'10vh',
     }).to('.page-loader-round-container',{
       top:'-5vh',
+      onComplete:() => {
+        this.NgZone.run(() => this.router.navigate([`/${this.store.pageTransitionTargetPage}`]))
+      }
     }).to('.page-loader-round-content > div',{
       opacity:1,
       marginTop:-100,
