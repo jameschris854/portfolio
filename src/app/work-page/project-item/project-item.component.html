@@ -1,0 +1,9 @@
+<div [ngClass]="['project-item-container',item.uid]">
+    <img [src]='item.image' alt="">
+    <div class="project-item-name" [innerHTML]='item.name'></div>
+    <div class="project-row-divider"></div>
+    <div class="project-item-row">
+        <div class="project-item-technology" [innerHTML]='item.technology'></div>
+        <div class="project-item-year" [innerHTML]='item.year'></div>
+    </div>
+</div>

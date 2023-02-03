@@ -13,6 +13,8 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { MenuItemComponent } from './side-menu/menu-item/menu-item.component';
 import { FloatingMenuButtonComponent } from './floating-menu-button/floating-menu-button.component';
 import { WorkPageComponent } from './work-page/work-page.component';
+import { ProjectsComponent } from './work-page/projects/projects.component';
+import { ProjectItemComponent } from './work-page/project-item/project-item.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { WorkPageComponent } from './work-page/work-page.component';
     MenuItemComponent,
     FloatingMenuButtonComponent,
     WorkPageComponent,
+    ProjectsComponent,
+    ProjectItemComponent
   ],
   imports: [
     BrowserModule,

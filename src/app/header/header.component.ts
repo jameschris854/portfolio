@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { StoreService } from '../store.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { StoreService } from '../store.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  @Input() theme: "dark" | "light" = "light"
 
   menuList = [
     {
@@ -56,4 +58,12 @@ export class HeaderComponent implements OnInit {
     console.log(item)
     this.store.startPageTransition(item.navigateTo,item.content)
   } 
+
+  headerColor = () => {
+    if(this.theme === 'light'){
+      return "#ffffff"
+    }else{
+      return "#141517"
+    }
+  }
 }

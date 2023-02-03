@@ -1,4 +1,4 @@
-<div [ngClass]="['button-wrapper', uid]" (click)="handleMenuClick()">
+<div [ngClass]="['button-wrapper', uid]" [ngStyle]="{'color':getColor()}" (click)="handleMenuClick()">
     <div [ngClass]="['button', uid]">
         <div [ngClass]="['button-text', uid]">
             {{content}}

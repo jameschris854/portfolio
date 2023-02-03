@@ -1,4 +1,4 @@
-<div class="header-container">
+<div class="header-container" [ngStyle]="{'color':headerColor()}">
     <div class="header-left">
         <span class="symbol">©</span>
         <div class="content-container" (click)="handleNameClick()">
@@ -11,6 +11,7 @@
         [uid]="item.id" 
         [content]="item.content" 
         [handleMenuClick]="handleMenuClick.bind(this,item)"
+        [theme]="theme"
         ></app-magnetic-text>
     </div>
 </div>

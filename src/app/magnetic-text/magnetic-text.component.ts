@@ -12,6 +12,7 @@ export class MagneticTextComponent implements OnInit {
   @Input() content!: string
   @Input() uid!: string
   @Input() handleMenuClick!: any
+  @Input() theme: "dark" | "light" = "light"
 
   constructor(public store : StoreService) { }
 
@@ -78,6 +79,14 @@ export class MagneticTextComponent implements OnInit {
 
   handleClick = () => {
     this.store.startPageTransition(`${this.uid}`,this.content)
+  }
+
+  getColor = () => {
+    if(this.theme === 'light'){
+      return "#ffffff"
+    }else{
+      return "#141517"
+    }
   }
 
 }
