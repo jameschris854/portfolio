@@ -9,4 +9,25 @@
         word-wrap: normal;
         margin-top: 15vh;
     }
+    .view-button-container{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 2;
+        pointer-events: none;
+        .view-button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 160px;
+            height: 160px;
+            background-color: #455CE9;
+            color: #ffffff;
+            border-radius: 100%;
+            transform: scale(0);
+        }
+    }
 }
+

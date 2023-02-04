@@ -19,23 +19,27 @@ export class ProjectItemComponent implements OnInit {
 
   init = () => {
     const projects = gsap.utils.toArray<HTMLElement>('.project-item-container')
+
+    const tl = gsap.timeline()
+    tl.fromTo('.view-button',{
+      scale:0,
+      duration:0.5
+    },{
+      scale:1,
+      duration:0.2,
+    })
+
     for(let project in projects){
       Observer.create({
         target:projects[project],
         onHover:() => {
-          gsap.to('.view-button',{
-            scale:1,
-            duration:0.5
-          })
+          tl.play()
           gsap.to('html',{
             cursor:'none'
           })
         },
         onHoverEnd:() => {
-          gsap.to('.view-button',{
-            scale:0,
-            duration:0.2,
-          })
+          tl.reverse()
           gsap.to('html',{
             cursor:'auto'
           })

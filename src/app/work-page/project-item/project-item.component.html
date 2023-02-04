@@ -1,5 +1,7 @@
 <div [ngClass]="['project-item-container',item.uid]">
-    <img [src]='item.image' alt="">
+    <div class="project-item-image-container">
+        <div class="project-item-image" [ngStyle]="{'background-image':'url('+item.image+')'}" alt=""></div>
+    </div>
     <div class="project-item-name" [innerHTML]='item.name'></div>
     <div class="project-row-divider"></div>
     <div class="project-item-row">

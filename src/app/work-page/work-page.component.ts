@@ -14,9 +14,24 @@ export class WorkPageComponent implements OnInit {
         this.init()
       }
     });
+    setTimeout(() => {
+      this.ViewButtoninit()
+    }, 1000);
    }
 
   ngOnInit(): void {
+  }
+
+  ViewButtoninit = () => {
+    Observer.create({target:window,
+      onMove: (e:any) => {
+        gsap.to('.view-button',{
+          x:e.event.clientX - document.querySelector('.view-button')!.getBoundingClientRect().width/2,
+          y:e.event.clientY - document.querySelector('.view-button')!.getBoundingClientRect().height/2,
+          stagger:0.1
+        })
+      }}
+    )
   }
 
   init(){
