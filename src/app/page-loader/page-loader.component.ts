@@ -13,7 +13,7 @@ export class PageLoaderComponent implements OnInit {
   constructor(public store: StoreService,private router: Router,private NgZone: NgZone) {
     store.pageTransitionChange.subscribe((value) => {
       console.log('value changed',value)
-      if(value){
+      if(value === "start"){
         this.animate()
       }
     });
@@ -44,6 +44,9 @@ export class PageLoaderComponent implements OnInit {
     }).to('.page-loader-round-content > div',{
       opacity:1,
       marginTop:-100,
+      onComplete:() => {
+        this.store.pageTransitionChange.next("mid")
+      }
     }).to('.page-loader-round-bottom',{
         height:'10vh',
     }).to('.page-loader-round-container',{

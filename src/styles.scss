@@ -19,3 +19,24 @@ html{
     padding: 0px;
     overflow-y: overlay;
 }
+
+::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(231, 231, 231); 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(17, 16, 39); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #86868600; 
+  }

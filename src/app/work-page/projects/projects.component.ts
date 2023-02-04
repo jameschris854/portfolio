@@ -68,10 +68,8 @@ export class ProjectsComponent implements OnInit {
   }
 
   init = () => {
-    console.log('init')
     Observer.create({target:window,
       onMove: (e:any) => {
-        console.log(e.x)
         gsap.to('.view-button',{
           x:e.event.clientX - document.querySelector('.view-button')!.getBoundingClientRect().width/2,
           y:e.event.clientY - document.querySelector('.view-button')!.getBoundingClientRect().height/2,

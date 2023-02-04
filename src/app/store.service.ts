@@ -8,8 +8,8 @@ import { Subject } from 'rxjs';
 export class StoreService {
 
   // PageTransition
-  pageTransition : boolean = false
-  pageTransitionChange :  Subject<boolean> = new Subject<boolean>();
+  pageTransition : "start"|"mid"|"idle" = "idle"
+  pageTransitionChange :  Subject<"start"|"mid"|"idle"> = new Subject<"start"|"mid"|"idle">();
   pageTransitionContent = ""
   pageTransitionTargetPage = ""
   pageTransitionTimeline = gsap.timeline({defaults:{
@@ -23,11 +23,11 @@ export class StoreService {
 
   constructor() { 
     this.pageTransitionChange.subscribe((value) => {
-      this.pageTransition = value
+      this.pageTransition = "start"
     });
     this.pageTransitionTimeline.addLabel("loadPage",1.8)
     this.pageTransitionTimeline.eventCallback("onComplete",(e) => {
-      this.pageTransitionChange.next(false)
+      this.pageTransitionChange.next("idle")
     })
     this.menuSubject.subscribe((val) => {
       this.isMenuVisible = val
@@ -37,7 +37,7 @@ export class StoreService {
   startPageTransition = (toPage:string,content:string) => {
     this.pageTransitionContent = content
     this.pageTransitionTargetPage = toPage
-    this.pageTransitionChange.next(true)
+    this.pageTransitionChange.next("start")
   }
 
   showMenu = () => {
