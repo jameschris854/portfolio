@@ -20,7 +20,7 @@ export class ProjectItemComponent implements OnInit {
   init = () => {
     const projects = gsap.utils.toArray<HTMLElement>('.project-item-container')
 
-    const tl = gsap.timeline()
+    const tl = gsap.timeline({paused:true})
     tl.fromTo('.view-button',{
       scale:0,
       duration:0.5
