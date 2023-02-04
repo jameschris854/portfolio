@@ -14,8 +14,11 @@
         padding-left: 20px;
         display: flex;
         flex-direction: row;
-        .symbol{
+        .symbol-container{
+            display: flex;
             padding-right: 3px;
+            .symbol{
+            }
         }
         .content-container{
             overflow: hidden;
@@ -25,7 +28,7 @@
             cursor: pointer;
             .content{
                 position: absolute;
-                left: 0;
+                left: 5;
                 top: 0;
             }
         }

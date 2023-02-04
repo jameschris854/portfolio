@@ -38,13 +38,19 @@ export class HeaderComponent implements OnInit {
       onHover:() => {
         gsap.to('.content-container > .content',{
           left:-65,
-          duration:0.5
+          duration:0.3
+        })
+        gsap.to('.symbol',{
+          rotate:720
         })
       },
       onHoverEnd:() => {
         gsap.to('.content-container > .content',{
-          left:0,
-          duration:0.5
+          left:5,
+          duration:0.3
+        })
+        gsap.to('.symbol',{
+          rotate:0
         })
       }
     })
