@@ -1,5 +1,7 @@
-import { Observer } from 'gsap/all';
 import { Component, OnInit } from '@angular/core';
+import { gsap } from "gsap";
+import { Observer } from "gsap/Observer";
+
 gsap.registerEffect(Observer)
 
 @Component({

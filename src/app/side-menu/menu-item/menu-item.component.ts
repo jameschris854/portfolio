@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { StoreService } from 'src/app/store.service';
+import { gsap } from "gsap";
+import { Observer } from "gsap/Observer";
+
+gsap.registerPlugin(Observer);
 
 @Component({
   selector: 'app-menu-item',

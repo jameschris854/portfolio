@@ -11,8 +11,8 @@
     }
     .view-button-container{
         position: fixed;
-        top: 0;
-        left: 0;
+        top: var(--fixed-top);
+        left: var(--fixed-left);
         height: 100vh;
         width: 100vw;
         z-index: 2;

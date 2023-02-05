@@ -1,12 +1,16 @@
 // @ts-nocheck
+import { gsap } from "gsap";
+
 export class GsapUtils {
-  static horizontalLoop(items, config) {
+  static horizontalLoop(items, config:TimelineVars) {
     items = gsap.utils.toArray(items);
     config = config || {};
+    console.log(config.scrollTrigger)
     let tl = gsap.timeline({
         repeat: config.repeat,
         paused: config.paused,
         defaults: { ease: 'none' },
+        scrollTrigger:config.scrollTrigger,
         onReverseComplete: () =>
           tl.totalTime(tl.rawTime() + tl.duration() * 100),
       }),
@@ -101,14 +105,15 @@ export class GsapUtils {
       tl.vars.onReverseComplete();
       tl.reverse();
     }
+    console.log(tl)
     return tl;
   }
 
-  static splitText(selector:string) {
+  static splitText(selector:string,method:"words"|"char") {
     let el = document.querySelector(selector)
 
     const text = el?.textContent
-    const arr = text.split("")
+    const arr = text.split(method === "words" ? " " : "")
 
     el?.textContent = ""
     arr.forEach((str) => {

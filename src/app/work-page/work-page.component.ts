@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../store.service';
+import { gsap } from "gsap";
+import {Observer} from "gsap/Observer"
 
 @Component({
   selector: 'app-work-page',
@@ -25,11 +27,13 @@ export class WorkPageComponent implements OnInit {
   ViewButtoninit = () => {
     Observer.create({target:window,
       onMove: (e:any) => {
-        gsap.to('.view-button',{
-          x:e.event.clientX - document.querySelector('.view-button')!.getBoundingClientRect().width/2,
-          y:e.event.clientY - document.querySelector('.view-button')!.getBoundingClientRect().height/2,
-          stagger:0.1
-        })
+        if(document.querySelector('.view-button')?.getBoundingClientRect()){
+          gsap.to('.view-button',{
+            x:e.event.clientX - document.querySelector('.view-button')!.getBoundingClientRect().width/2,
+            y:e.event.clientY - document.querySelector('.view-button')!.getBoundingClientRect().height/2,
+            stagger:0.1
+          })
+        }
       }}
     )
   }

@@ -8,7 +8,12 @@ import { StoreService } from './store.service';
 })
 export class AppComponent {
   title = 'my-portfolio';
-  
+
   constructor(public store: StoreService){
+    console.log('app root')
+  }
+
+  ngOnInit() {
+    this.store.initSmoothScrolling()
   }
 }

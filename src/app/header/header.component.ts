@@ -1,6 +1,11 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { StoreService } from '../store.service';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Observer } from "gsap/Observer";
+
+gsap.registerPlugin(ScrollTrigger, Observer);
 
 @Component({
   selector: 'app-header',
@@ -32,7 +37,6 @@ export class HeaderComponent implements OnInit {
   constructor(private route:Router,public store: StoreService) { }
 
   ngOnInit(): void {
-    gsap.registerEffect([Observer,ScrollTrigger])
     Observer.create({
       target:'.header-left',
       onHover:() => {

@@ -2,8 +2,8 @@
     position: fixed;
     width: 100vw;
     height: 100vh;
-    left: 0;
-    top: 0;
+    top: var(--fixed-top);
+    left: var(--fixed-left);
     pointer-events: none;
     z-index: 2;
     .side-menu-dead-zone{

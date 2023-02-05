@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { gsap } from "gsap";
+import { Observer } from "gsap/Observer";
 
-gsap.registerEffect(Observer)
+gsap.registerPlugin(Observer);
 
 @Component({
   selector: 'app-project-item',

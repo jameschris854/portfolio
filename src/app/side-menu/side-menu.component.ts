@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../store.service';
+import { gsap } from "gsap";
 
 @Component({
   selector: 'app-side-menu',

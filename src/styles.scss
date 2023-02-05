@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --blue: #1e90ff;
+  --white: #ffffff; 
+  --fixed-top: 0px;
+  --fixed-left: 0px;
+}
+
 body{
     width: 100vw;
     height: 100vh;
@@ -17,7 +25,8 @@ html{
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
-    overflow-y: overlay;
+    // overflow-y: overlay;
+    scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {

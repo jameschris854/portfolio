@@ -1,5 +1,9 @@
 import { StoreService } from './../store.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { gsap } from "gsap";
+import { Observer } from "gsap/Observer";
+
+gsap.registerPlugin(Observer);
 
 @Component({
   selector: 'app-magnetic-text',
@@ -26,7 +30,6 @@ export class MagneticTextComponent implements OnInit {
     if(!this.uid) return;
     const wrapper = document.querySelector(`.button-wrapper.${this.uid}`)?.getClientRects()[0]
     try {
-      gsap.registerEffect(Observer)
       Observer.create({
         target:`.button-wrapper.${this.uid}`,
         type:`pointer`,

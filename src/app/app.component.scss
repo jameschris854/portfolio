@@ -9,9 +9,24 @@
 }
 
 .floating-menu-container{
-    right: 16px;
-    position: absolute;
+    right: 0px;
+    position: fixed;
     z-index: 200;
+    width: -moz-fit-content;
     width: fit-content;
+    height: -moz-fit-content;
     height: fit-content;
+    top: 0px;
+}
+.smooth-scroll{
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+.scroll-content{
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    scroll-behavior: smooth;
 }

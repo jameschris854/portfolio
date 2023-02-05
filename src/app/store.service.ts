@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import Scrollbar from 'smooth-scrollbar';
+import { ScrollStatus } from 'smooth-scrollbar/interfaces';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +26,9 @@ export class StoreService {
   //Menu
   isMenuVisible: boolean = false
   menuSubject: Subject<boolean> = new Subject<boolean>();
+
+  //smooth scrolling.
+  globalScrollSubject: Subject<ScrollStatus> = new Subject<ScrollStatus>();
 
   constructor() { 
     this.pageTransitionChange.subscribe((value) => {
@@ -46,5 +55,33 @@ export class StoreService {
 
   hideMenu = () => {
     this.menuSubject.next(false)
+  }
+
+  initSmoothScrolling = () => {
+    const el : HTMLElement | null = document.querySelector('.smooth-scroll')
+    // if(el){
+    //   const bodyScrollBar = Scrollbar.init(el, { damping: 0.03});
+    //   const r : HTMLElement | null = document.querySelector(':root');
+    //   bodyScrollBar.addListener((ScrollStatus) => {  
+    //     this.globalScrollSubject.next(ScrollStatus)
+    //     const { offset } = ScrollStatus
+    //     if(r){
+    //       r.style.setProperty('--fixed-top',offset.y + 'px')
+    //       r.style.setProperty('--fixed-left',offset.x + 'px') 
+    //     }
+    //   });
+    //   // Tell ScrollTrigger to use these proxy getter/setter methods for the "body" element: 
+    //   bodyScrollBar.setPosition(0, 0);
+    //   bodyScrollBar.track.xAxis.element.remove();
+    //   ScrollTrigger.scrollerProxy(document.body, {
+    //     scrollTop(value) {
+    //       if (value) {
+    //         bodyScrollBar.scrollTop = value;
+    //       }
+    //       return bodyScrollBar.scrollTop;
+    //     },
+    //   });
+    //   bodyScrollBar.addListener(ScrollTrigger.update);
+    // }
   }
 }

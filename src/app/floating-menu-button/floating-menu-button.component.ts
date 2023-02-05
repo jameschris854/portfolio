@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../store.service';
+import { gsap } from "gsap";
+import {Observer} from "gsap/Observer"
 
 @Component({
   selector: 'app-floating-menu-button',
@@ -31,10 +33,14 @@ export class FloatingMenuButtonComponent implements OnInit {
 
   init = () => {
     Observer.create({
-      target:'.app-container-wrapper',
+      target:document.body,
       type:'scroll',
       onChangeY:(e) => {
         const relativeTop = document.querySelector('.header-container')?.getBoundingClientRect().top
+
+    // this.store.globalScrollSubject.subscribe((ScrollStatus) => {
+    //   const { offset } = ScrollStatus
+    //   const relativeTop = offset.y
         if(this.animationInProgress) return
         if(Math.abs(Number(relativeTop)) > 200){
           if(!this.isMenuButtonVisible){
