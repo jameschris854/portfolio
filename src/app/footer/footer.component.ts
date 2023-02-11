@@ -17,19 +17,40 @@ export class FooterComponent implements OnInit {
     ScrollTrigger.refresh(true)
   }
   ngAfterViewInit(): void {
-    gsap.set('.footer-curve',{
-      borderRadius:'50%',
-    })
-    gsap.to('.footer-curve',{
-      height:'0%',
-      top:0,
+   
+    gsap.timeline({
       scrollTrigger:{
-        start:'+=-50%',
+        start:`+=-${window.innerHeight-(0.10 * window.innerHeight)}`,
         end: "top",
         scrub:true,
-        trigger:'.footer-container'
+        trigger:'.footer-container',
       }
-    })
+    }).addLabel("curve").to(".footer-curve",{
+      height:'0%',
+      top:0,
+      stagger:0.1
+    },"curve").to(".footer-content",{
+      height:'100%',
+      stagger:0.1
+    },"curve").to(".button-container",{
+      right:"20%",
+      stagger:0.1
+    },"curve")
+   
+   
+    // gsap.set('.footer-curve',{
+    //   borderRadius:'50%',
+    // })
+    // gsap.to('.footer-curve',{
+    //   height:'0%',
+    //   top:0,
+    //   scrollTrigger:{
+    //     start:'+=-50%',
+    //     end: "top",
+    //     scrub:true,
+    //     trigger:'.footer-container'
+    //   }
+    // })
   }
   
 

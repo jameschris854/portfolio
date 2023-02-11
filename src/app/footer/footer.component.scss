@@ -5,6 +5,7 @@
     background-color: #1C1D20;
     overflow: hidden;
     --curve-scale: 0vw;
+    z-index: -1;
 
     .footer-curve{
         position: absolute;
@@ -15,55 +16,60 @@
         background-color: #ffffff;
         border-radius: 50%;
         transform: scaleX(2.5);
-        box-shadow: 3px 15px 20px 0px #000;
+        box-shadow: 0px 20px 20px 20px #121212;    
+        z-index: 1;
     }
-    .footer-container{
-        display: flex;
-        width: 100%;
-        height: 100%;
-        justify-content: center;
-        align-items: center;
-        .footer-row-1{
+    .footer-content{
+        height: 30%;
+        .footer-container{
             display: flex;
-            flex-direction: column;
+            width: 100%;
+            height: 100%;
             justify-content: center;
             align-items: center;
-            align-self: center;
-            font-size: 120px;
-            color: #ffffff;
-            width: 70%;
-            .lets-worl{
+            .footer-row-1{
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                .footer-img{
-                    height: 100px;
-                    width: 100px;
-                    border-radius: 50%;
-                    margin-right: 50px;
+                align-self: center;
+                font-size: 120px;
+                color: #ffffff;
+                width: 70%;
+                .lets-worl{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    .footer-img{
+                        height: 100px;
+                        width: 100px;
+                        border-radius: 50%;
+                        margin-right: 50px;
+                    }
                 }
-            }
-            div{
-                align-self: flex-start;
-            }
-            .get-in-touch{
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100px;
-                .divider{
+                div{
+                    align-self: flex-start;
+                }
+                .get-in-touch{
                     width: 100%;
-                    background-color: #53535362;
-                    height: 2px;
-                    border-radius: 50%;
-                    align-self: auto;
-                }
-                .button-container{
-                    position: absolute;
-                    right: 20%;
-                    top: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100px;
+                    .divider{
+                        width: 100%;
+                        background-color: #53535362;
+                        height: 2px;
+                        border-radius: 50%;
+                        align-self: auto;
+                    }
+                    .button-container{
+                        position: absolute;
+                        right: 40%;
+                        top: 50%;
+                        z-index: 1;
+                    }
                 }
             }
         }
