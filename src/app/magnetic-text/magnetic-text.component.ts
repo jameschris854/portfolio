@@ -12,7 +12,7 @@ gsap.registerPlugin(Observer);
 })
 export class MagneticTextComponent implements OnInit {
 
-  isButtonFocused: boolean = false;
+  @Input() isButtonFocused: boolean = false;
   @Input() content!: string
   @Input() uid!: string
   @Input() handleMenuClick!: any
@@ -27,6 +27,11 @@ export class MagneticTextComponent implements OnInit {
   }
 
   init = () => {
+
+    if(this.isButtonFocused){
+      this.setActive()
+    }
+
     if(!this.uid) return;
     const wrapper = document.querySelector(`.button-wrapper.${this.uid}`)?.getClientRects()[0]
     try {
@@ -55,10 +60,7 @@ export class MagneticTextComponent implements OnInit {
         type:`pointer.${this.uid}`,
         onHover:() => {
           this.isButtonFocused = true;
-          gsap.to(`.button > .dot.${this.uid}`,{
-            scale:1,
-            duration:0.2
-          })
+          this.setActive()
         },
         onHoverEnd:() => {
           this.isButtonFocused = false;
@@ -68,11 +70,11 @@ export class MagneticTextComponent implements OnInit {
             duration:1.5,
             ease: `elastic.out(1, 0.3)`
           })
-
-          gsap.to(`.button > .dot.${this.uid}`,{
-            scale:0,
-            duration:0.2
-          })
+          if(this.isButtonFocused){
+            this.setActive()
+          }else{
+            this.setInActive()
+          }
         }
       })
     } catch (error) {  } finally{
@@ -90,6 +92,20 @@ export class MagneticTextComponent implements OnInit {
     }else{
       return "#141517"
     }
+  }
+
+  setActive = () => {
+    gsap.to(`.button > .dot.${this.uid}`,{
+      scale:1,
+      duration:0.2
+    })
+  }
+
+  setInActive = () => {
+    gsap.to(`.button > .dot.${this.uid}`,{
+      scale:0,
+      duration:0.2
+    })
   }
 
 }

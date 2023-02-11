@@ -3,6 +3,6 @@
         <div [ngClass]="['button-text', uid]">
             {{content}}
         </div>
-        <span [ngClass]="['dot', uid]"></span>
+        <span [ngClass]="['dot', uid]" [ngStyle]="{'background-color':getColor()}"></span>
     </div>
 </div>

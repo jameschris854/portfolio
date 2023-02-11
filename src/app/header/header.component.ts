@@ -20,17 +20,29 @@ export class HeaderComponent implements OnInit {
     {
       id:"w1",
       content: "Work",
-      navigateTo: "work"
+      navigateTo: "work",
+      route: this.route,
+      get active () {
+        return this.route.url.includes(this.navigateTo)
+      }
     },
     {
       id:"A2",
       content: "About",
-      navigateTo: "about"
+      navigateTo: "about",
+      route: this.route,
+      get active () {
+        return this.route.url.includes(this.navigateTo)
+      }
     },
     {
       id:"C3",
       content: "Contact",
-      navigateTo: "contact"
+      navigateTo: "contact",
+      route: this.route,
+      get active () {
+        return this.route.url.includes(this.navigateTo)
+      }
     }
   ]
 

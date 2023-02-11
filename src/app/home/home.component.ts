@@ -33,9 +33,10 @@ export class HomeComponent implements OnInit {
         const bigTextloopTl = GsapUtils.horizontalLoop(gsap.utils.toArray('.big-text-loop-container > span'),{paused:true,repeat:-1})
         bigTextloopTl.play(-0.5)
         let resetTimer : any
-        const reset = () => {
-          resetTimer = setTimeout(() => {
-            bigTextloopTl.timeScale(1)
+        const reset = (direction:string,fn:() => void) => {
+          fn()
+          resetTimer = setTimeout((fn) => {
+            bigTextloopTl.timeScale(1.0)[direction]()
           },250)
         }
         gsap.to(".big-text-loop-container",{
@@ -46,12 +47,12 @@ export class HomeComponent implements OnInit {
             onUpdate:(e) => {
               clearTimeout(resetTimer)
               if(e.direction > 0){
-                bigTextloopTl.play()
+                bigTextloopTl.timeScale(3.0)
+                reset("play",() => bigTextloopTl.play())
               }else{
-                bigTextloopTl.reverse()
+                bigTextloopTl.timeScale(3.0)
+                reset("reverse",() => bigTextloopTl.reverse())
               }
-              bigTextloopTl.timeScale(3)
-              reset()
             },
           }
         })
