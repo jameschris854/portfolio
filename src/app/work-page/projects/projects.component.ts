@@ -68,14 +68,14 @@ export class ProjectsComponent implements OnInit {
       image: "../../../assets/Projects/instacloness.jpg",
       technology: 'Fullstack',
       year: '2021',
-      uid:'Pr7'
+      uid:'Pr8'
     },
     {
       name: "Dream Garden",
       image: "../../../assets/Projects/dreamgarden.jpg",
       technology: 'Frontend',
       year: '2021',
-      uid:'Pr7'
+      uid:'Pr9'
     }
   ]
 

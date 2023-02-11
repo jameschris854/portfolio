@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
       gsap.to('.app-container-wrapper',{duration: 0.5,overflowY:'auto',delay:1.6}).eventCallback("onComplete",() => {
         GsapUtils.splitText('.big-text-loop-container',"char")
         const bigTextloopTl = GsapUtils.horizontalLoop(gsap.utils.toArray('.big-text-loop-container > span'),{paused:true,repeat:-1})
-        bigTextloopTl.play(-0.5)
+        bigTextloopTl.play()
         let resetTimer : any
         const reset = (direction:string,fn:() => void) => {
           fn()
