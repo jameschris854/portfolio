@@ -1,10 +1,11 @@
-.footer-container {
+.footer-wrapper {
     position: relative;
     height: 120vh;
     width: 100vw;
     background-color: #1C1D20;
     overflow: hidden;
     --curve-scale: 0vw;
+
     .footer-curve{
         position: absolute;
         bottom: 90%;
@@ -15,6 +16,57 @@
         border-radius: 50%;
         transform: scaleX(2.5);
         box-shadow: 3px 15px 20px 0px #000;
+    }
+    .footer-container{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        .footer-row-1{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+            font-size: 120px;
+            color: #ffffff;
+            width: 70%;
+            .lets-worl{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                .footer-img{
+                    height: 100px;
+                    width: 100px;
+                    border-radius: 50%;
+                    margin-right: 50px;
+                }
+            }
+            div{
+                align-self: flex-start;
+            }
+            .get-in-touch{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100px;
+                .divider{
+                    width: 100%;
+                    background-color: #53535362;
+                    height: 2px;
+                    border-radius: 50%;
+                    align-self: auto;
+                }
+                .button-container{
+                    position: absolute;
+                    right: 20%;
+                    top: 50%;
+                }
+            }
+        }
     }
 }
 
