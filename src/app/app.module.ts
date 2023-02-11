@@ -15,6 +15,7 @@ import { FloatingMenuButtonComponent } from './floating-menu-button/floating-men
 import { WorkPageComponent } from './work-page/work-page.component';
 import { ProjectsComponent } from './work-page/projects/projects.component';
 import { ProjectItemComponent } from './work-page/project-item/project-item.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProjectItemComponent } from './work-page/project-item/project-item.comp
     FloatingMenuButtonComponent,
     WorkPageComponent,
     ProjectsComponent,
-    ProjectItemComponent
+    ProjectItemComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
