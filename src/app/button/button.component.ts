@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, enableProdMode } from '@angular/core';
 import gsap from 'gsap';
 import { Observer } from 'gsap/all';
 import { StoreService } from '../store.service';
+
+gsap.registerEffect(Observer);
 
 @Component({
   selector: `app-button`,
@@ -15,8 +17,12 @@ export class ButtonComponent implements OnInit {
   @Input() backgroundColor: string = `#1c1d20`;
   @Input() waveColor: string = `#334bd3`;
   @Input() handleClick!: any
-  @Input() size : string = '300'
+  @Input() width : string = '300'
+  @Input() height : string = '300'
   @Input() textSize : string = '15'
+  @Input() borderRadius: string = "50%"
+  @Input() textColor: string = "#ffffff"
+  @Input() borderColor: string = "#ffffff1a"
 
   constructor(public store: StoreService) {}
 
@@ -35,7 +41,6 @@ export class ButtonComponent implements OnInit {
         yPercent: 75,
       }
     );
-    gsap.registerEffect(Observer);
     Observer.create({
       target: `.button-wrapper.${this.uid}`,
       type: `pointer`,
@@ -69,12 +74,13 @@ export class ButtonComponent implements OnInit {
         }
       },
     });
-
+    const originalTextColor = this.textColor
     Observer.create({
       target: `.button.${this.uid}`,
       type: `pointer`,
       onHover: () => {
         this.isButtonFocused = true;
+        this.textColor = "#ffffff"
         gsap.fromTo(
           `.button-wave.${this.uid}`,
           {
@@ -84,7 +90,6 @@ export class ButtonComponent implements OnInit {
             yPercent: 0,
           }
         );
-        console.log(`honverd`);
       },
       onHoverEnd: () => {
         this.isButtonFocused = false;
@@ -93,17 +98,20 @@ export class ButtonComponent implements OnInit {
           y: 0,
           duration: 1.5,
           ease: `elastic.out(1, 0.3)`,
-        });
+        })
         gsap.to(`.button > div.${this.uid}`, {
           x: 0,
           y: 0,
           duration: 1.5,
           ease: `elastic.out(1, 0.3)`,
-        });
+        })
         gsap.to(`.button-wave.${this.uid}`, {
           yPercent: -75,
-        });
-        console.log(`honverend`);
+          onUpdate:(e) => {
+            console.log(e)
+            this.textColor=originalTextColor
+          }
+        })
       },
     });
   }

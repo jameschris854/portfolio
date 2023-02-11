@@ -2,10 +2,28 @@
   <div class="app-container">
     <div class="section-1">
       <app-header [theme]="'light'"></app-header>
-      <img src="../../assets/background.webp" class="background" />
+      <img src="../../assets/profilePic.png" class="background" />
+      <div class="home-about-wrapper">
+        <div class="home-about-content">
+          <div class="text-reveal-container">
+            <div class="row-1 text-reveal">HI,</div>
+          </div>
+          <div class="text-reveal-container">
+            <div class="row-2 text-reveal">I'am a</div>
+          </div>
+          <div class="text-reveal-container">
+            <div class="row-3 text-reveal">
+              <div>Frontend</div>
+              <div style="width:10px"></div>  
+              <div>Developer</div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="big-text-loop-container">James—Christopher </div>
     </div>
     <!-- <app-button [buttonColor]="'green'"></app-button> -->
     <div class="placeholder-content" ></div>
   </div>
+  <app-footer></app-footer>
 </div>

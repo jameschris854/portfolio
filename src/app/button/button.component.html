@@ -1,5 +1,12 @@
 <div [ngClass]="['button-wrapper', uid]" (click)="handleClick()">
-    <div  [ngClass]="['button', uid]" [ngStyle]="{'background-color': backgroundColor,'width': size+'px' ,height: size+'px' }">
+    <div  [ngClass]="['button', uid]" [ngStyle]="{
+        'background-color': backgroundColor,
+        'width': width+'px',
+        height: height+'px',
+        borderRadius: borderRadius,
+        color: textColor,
+        borderColor: borderColor
+    }">
         <div [ngClass]="['button-text', uid]" [ngStyle]="{'font-size': textSize+'px'}">
             {{content}}
         </div>

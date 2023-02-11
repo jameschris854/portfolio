@@ -1,50 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
 
-body{
-    width: 100vw;
-    height: 100vh;
+body {
+  width: 100vw;
+  height: 100vh;
 }
 
-.app-container-wrapper{
-    position: relative;
-    height: fit-content;
+.app-container-wrapper {
+  position: relative;
+  height: fit-content;
 }
 
-.app-container{
-    height: inherit;
-    width: inherit;
-    position: inherit;
-    .placeholder-content{
-        width: 100%;
-        height: 3000px;
-    }
-}
-
-.section-1{
-    position: relative;
-    height: 100vh;
+.app-container {
+  height: inherit;
+  width: inherit;
+  position: inherit;
+  .placeholder-content {
     width: 100%;
-    .background{
-        position: absolute;
-        z-index: -1;
-        width: 100%;
-        height: 100vh;
-        top:0px
+    height: 3000px;
+  }
+}
+
+.section-1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: #545454;
+  .background {
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .big-text-loop-container {
+    position: absolute;
+    bottom: 5vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+    span {
+      font-size: 207px;
+      color: #ffffff;
+      font-family: "Arvo", serif;
     }
-    .big-text-loop-container{
-        position: absolute;
-        bottom: 5vh;
-        width: 100%;
+  }
+
+  .home-about-wrapper{
         display: flex;
-        align-items: center;
-        overflow: hidden;
-        text-overflow: clip;
-        white-space: nowrap;
-        span{
-            font-size: 207px;
-            color: #ffffff;
-            font-family: 'Arvo', serif;
+        flex: 1;
+        justify-content: center;
+        align-items: self-end;
+        flex-direction: column;
+        padding-right: 10%;
+        margin-top: -10%;
+      .home-about-content {
+        font-size: 44px;
+        color: #ffffff;
+        .text-reveal-container{
+            height: 44px;
+            position: relative;
+            width: 300px;
+            margin-top: 10px;
+            overflow: hidden;
+            .text-reveal {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            }
         }
-    }
-    
+        .row-3{
+            display: flex;
+        }
+      }
+  }
 }

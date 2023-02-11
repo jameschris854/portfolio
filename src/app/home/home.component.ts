@@ -29,6 +29,10 @@ export class HomeComponent implements OnInit {
       gsap.set('.app-container-wrapper',{overflowY:'hidden'})
       gsap.to('.app-container',{autoAlpha: 1,duration:0.7,marginTop:0,top:0,delay:0.6})
       gsap.to('.app-container-wrapper',{duration: 0.5,overflowY:'auto',delay:1.6}).eventCallback("onComplete",() => {
+        gsap.to(".text-reveal",{
+          duration:0.7,
+          top:0
+        })
         GsapUtils.splitText('.big-text-loop-container',"char")
         const bigTextloopTl = GsapUtils.horizontalLoop(gsap.utils.toArray('.big-text-loop-container > span'),{paused:true,repeat:-1})
         bigTextloopTl.play()
@@ -56,6 +60,7 @@ export class HomeComponent implements OnInit {
             },
           }
         })
+        
       })
   }
 

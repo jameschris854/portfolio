@@ -45,11 +45,12 @@ export class FloatingMenuButtonComponent implements OnInit {
         if(Math.abs(Number(relativeTop)) > 200){
           if(!this.isMenuButtonVisible){
             this.animationInProgress = true
+            gsap.set('.floating-menu-container',{pointerEvents:'auto'})
             gsap.to('.menu-button',{
               autoAlpha:1,
               duration:0.2,
               top:0,
-              scale:1
+              scale:1,
             }).then(() => {
               this.isMenuButtonVisible = true
               this.animationInProgress = false
@@ -57,12 +58,13 @@ export class FloatingMenuButtonComponent implements OnInit {
           }
         }else{
           if(this.isMenuButtonVisible){
+            gsap.set('.floating-menu-container',{pointerEvents:'none'})
             this.animationInProgress = true
             gsap.to('.menu-button',{
               autoAlpha:0,
               duration:0.2,
               top: 100,
-              scale:0
+              scale:0,
             }).then(() => {
               this.isMenuButtonVisible = false
             this.animationInProgress = false

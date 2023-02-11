@@ -1,7 +1,6 @@
 import { gsap } from 'gsap';
 import { Component, OnInit } from '@angular/core';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { trigger } from '@angular/animations';
 
 gsap.registerPlugin(ScrollTrigger);
 @Component({
