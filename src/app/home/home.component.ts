@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { GsapUtils } from 'src/utils/gsapUtils/gsap-utils';
 import { StoreService } from '../store.service';
+const TagCloud = require('TagCloud');
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -25,6 +26,23 @@ export class HomeComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+
+    const container = '.sphere-container';
+
+    const texts = [
+      'React', 'Angular', 'JavaScript',
+      'CSS3', 'HTML5', 'Node',
+      'Express', 'MongoDb', 'DiscordBot',
+      'REST', 'React-Native', 'Postman',
+      'Jenkins', 'Integrations'
+    ];
+    const options = {
+      radius: 200,
+      itemClass: 'tag-cloud-text'
+    };
+
+    TagCloud(container, texts, options);
+
     gsap.set('.app-container',{autoAlpha: 0,marginTop:250,top:250})
       gsap.set('.app-container-wrapper',{overflowY:'hidden'})
       gsap.to('.app-container',{autoAlpha: 1,duration:0.7,marginTop:0,top:0,delay:0.6})

@@ -10,13 +10,12 @@ gsap.registerEffect(Observer);
   templateUrl: `./button.component.html`,
   styleUrls: [`./button.component.scss`],
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent{
   isButtonFocused: boolean = false;
   @Input() content!: string;
   @Input() uid!: string;
   @Input() backgroundColor: string = `#1c1d20`;
   @Input() waveColor: string = `#334bd3`;
-  @Input() handleClick!: any
   @Input() width : string = '300'
   @Input() height : string = '300'
   @Input() textSize : string = '15'
@@ -26,7 +25,8 @@ export class ButtonComponent implements OnInit {
 
   constructor(public store: StoreService) {}
 
-  ngOnInit(): void {
+  ngAfterViewInit (): void {
+    console.log('init button')
     setTimeout(() => {
       this.init()
     },1000)
@@ -108,7 +108,6 @@ export class ButtonComponent implements OnInit {
         gsap.to(`.button-wave.${this.uid}`, {
           yPercent: -75,
           onUpdate:(e) => {
-            console.log(e)
             this.textColor=originalTextColor
           }
         })

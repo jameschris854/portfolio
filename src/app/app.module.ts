@@ -16,6 +16,7 @@ import { WorkPageComponent } from './work-page/work-page.component';
 import { ProjectsComponent } from './work-page/projects/projects.component';
 import { ProjectItemComponent } from './work-page/project-item/project-item.component';
 import { FooterComponent } from './footer/footer.component';
+import { ProjectItemListComponent } from './work-page/project-item-list/project-item-list.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +33,12 @@ import { FooterComponent } from './footer/footer.component';
     WorkPageComponent,
     ProjectsComponent,
     ProjectItemComponent,
-    FooterComponent
+    FooterComponent,
+    ProjectItemListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,3 +4,25 @@
     margin: 0% 8%;
     justify-content: space-between;
 }
+.project-item-heading-container{
+    display: flex;
+    flex-direction: row;
+    padding-top: 3%;
+    margin-top: -1px;
+    border-left: 0px;
+    border-right: 0px;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    padding: 0px 10vw;
+    margin-top: 10vh;
+    opacity: 0.5;
+    .project-item-heading{
+        font-size: 20px;
+        margin: 20px 0px;
+    }
+    .project-item-heading2{
+        margin-left: auto;
+        font-size: 20px;
+    }
+}

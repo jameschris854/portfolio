@@ -9,7 +9,7 @@
         word-wrap: normal;
         margin-top: 15vh;
     }
-    .view-button-container{
+    .view-button-wrapper{
         position: fixed;
         top: var(--fixed-top);
         left: var(--fixed-left);
@@ -17,16 +17,60 @@
         width: 100vw;
         z-index: 2;
         pointer-events: none;
-        .view-button{
+
+        .view-button-container{
+            width: 200px;
+            height: 200px;
+            position: relative;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 160px;
-            height: 160px;
-            background-color: #455CE9;
-            color: #ffffff;
-            border-radius: 100%;
-            transform: scale(0);
+            background-color: #00000000;
+            transform: scale(1);
+            &.list{
+                width: 500px;
+                height: 500px;
+                background-color: #455CE9;
+            }
+            .view-button{
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 200px;
+                height: 200px;
+                background-color: #455CE9;
+                color: #ffffff;
+                border-radius: 100%;
+                z-index: 2;
+            }
+            .view-button.list{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 500px;
+                height: 500px;
+                background-color: #c2c2c2fd;
+                color: #ffffff;
+                z-index: 1;
+                overflow: hidden;
+                border-radius: 0%;
+                .view-button-image-container{
+                    height: 500px;
+                    width: 500px;
+                    background-color: #d4d4d4;
+                    .view-button-list-image{
+                        height: 80%;
+                        width: 80%;
+                        margin: 10% 10%;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        display: inline-block;
+                    }
+                }
+            }
         }
     }
     .project-controls{
