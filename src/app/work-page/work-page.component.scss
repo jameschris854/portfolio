@@ -24,11 +24,15 @@
             position: relative;
             display: flex;
             background-color: #00000000;
-            transform: scale(1);
+            transform: scale(0);
             &.list{
                 width: 500px;
                 height: 500px;
                 background-color: #455CE9;
+                .view-button{
+                    width: 80px;
+                    height: 80px;
+                }
             }
             .view-button{
                 position: absolute;

@@ -18,13 +18,12 @@ export class ProjectItemListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.init()
-    },3000)
   }
 
   ngAfterViewInit(): void {
-    
+    setTimeout(() => {
+      this.init()
+    },100)
   }
 
   init = () => {

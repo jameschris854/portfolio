@@ -18,14 +18,12 @@ export class ProjectItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    ScrollTrigger.refresh(true)
-    setTimeout(() => {
-      this.init()
-    },3000)
   }
 
   ngAfterViewInit(): void {
-    
+    setTimeout(() => {
+      this.init()
+    },100)
   }
 
   init = () => {

@@ -4,6 +4,9 @@ import { gsap } from "gsap";
 import {Observer} from "gsap/Observer"
 import { WorkPage } from './work-page.constants';
 import { WorkPageService } from './work-page.service';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger,Observer);
 
 @Component({
   selector: 'app-work-page',
@@ -63,7 +66,6 @@ export class WorkPageComponent implements OnInit {
   }
 
   init(){
-    console.log('init')
     gsap.fromTo('.work-phrase',{
       y:1000
     },{
@@ -98,6 +100,7 @@ export class WorkPageComponent implements OnInit {
       this.workPageService.layout = "list"
     }
     this.layoutConstant = this.layoutConstant.map((e) => ({...e,isActive: e.layout === layout})) 
+    ScrollTrigger.refresh(true)
   }
 
   trackFilters = (index:number,filter:typeof this.filters[0]) => {
