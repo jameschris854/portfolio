@@ -7,6 +7,7 @@ const TagCloud = require('TagCloud');
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { WorkPage } from '../work-page/work-page.constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,7 +19,11 @@ gsap.registerPlugin(ScrollTrigger);
 })
 export class HomeComponent implements OnInit {
 
+  recentWorks : typeof WorkPage.ProjectsConstant = [];
+
   constructor(public store: StoreService, private router :Router) {
+    this.recentWorks = WorkPage.ProjectsConstant
+    this.recentWorks.length = 5
   }
 
   ngOnInit(): void {

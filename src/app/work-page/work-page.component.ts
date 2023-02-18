@@ -72,11 +72,20 @@ export class WorkPageComponent implements OnInit {
       y:0,
       duration:0.8
     })
-    gsap.fromTo('app-projects',{
+
+    gsap.fromTo('.project-controls',{
       y:1000
     },{
       y:0,
       delay:0.1,
+      duration:0.9
+    })
+    
+    gsap.fromTo('app-projects',{
+      y:1000
+    },{
+      y:0,
+      delay:0.2,
       duration:0.8
     })
   }
