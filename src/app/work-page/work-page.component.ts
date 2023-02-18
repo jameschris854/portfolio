@@ -86,6 +86,15 @@ export class WorkPageComponent implements OnInit {
       this.workPageService.layout = "list"
     }
     this.layoutConstant = this.layoutConstant.map((e) => ({...e,isActive: e.layout === layout})) 
+
+    gsap.fromTo('app-projects',{
+      marginTop:300,
+      opacity:0
+    },{
+      marginTop:0,
+      opacity:1
+    })
+
     ScrollTrigger.refresh(true)
   }
 
