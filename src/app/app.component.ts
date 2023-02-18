@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'my-portfolio';
 
   constructor(public store: StoreService){
-    console.log('app root')
+    window.onbeforeunload = function(){ 	window.scrollTo(0,0); }
   }
 
   ngOnInit() {

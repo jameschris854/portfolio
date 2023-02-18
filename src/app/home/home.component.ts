@@ -9,8 +9,9 @@ const TagCloud = require('TagCloud');
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { WorkPage } from '../work-page/work-page.constants';
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,6 @@ gsap.registerPlugin(ScrollTrigger);
   encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {
-
 
   constructor(public store: StoreService, public WorkPageService :WorkPageService) {
     this.WorkPageService.layout = "list"
@@ -31,6 +31,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+
+    this.initBigText()
 
     const container = '.sphere-container';
 
@@ -47,44 +49,72 @@ export class HomeComponent implements OnInit {
     };
 
     TagCloud(container, texts, options);
-
-    gsap.set('.app-container',{autoAlpha: 0,marginTop:250,top:250})
-      gsap.set('.app-container-wrapper',{overflowY:'hidden'})
-      gsap.to('.app-container',{autoAlpha: 1,duration:0.7,marginTop:0,top:0,delay:0.6})
-      gsap.to('.app-container-wrapper',{duration: 0.5,overflowY:'auto',delay:1.6}).eventCallback("onComplete",() => {
-        gsap.to(".text-reveal",{
-          duration:0.7,
-          top:0
-        })
-        GsapUtils.splitText('.big-text-loop-container',"char")
-        const bigTextloopTl = GsapUtils.horizontalLoop(gsap.utils.toArray('.big-text-loop-container > span'),{paused:true,repeat:-1})
-        bigTextloopTl.play()
-        let resetTimer : any
-        const reset = (direction:string,fn:() => void) => {
-          fn()
-          resetTimer = setTimeout((fn) => {
-            bigTextloopTl.timeScale(1.0)[direction]()
-          },250)
-        }
-        gsap.to(".big-text-loop-container",{
-          scrollTrigger:{
-            start:'top top',
-            end:'+=100%',
-            scrub:true,
-            onUpdate:(e) => {
-              clearTimeout(resetTimer)
-              if(e.direction > 0){
-                bigTextloopTl.timeScale(3.0)
-                reset("play",() => bigTextloopTl.play())
-              }else{
-                bigTextloopTl.timeScale(3.0)
-                reset("reverse",() => bigTextloopTl.reverse())
-              }
-            },
-          }
-        })
-        
-      })
+    this.store.pageTransitionChange.subscribe((value) => {
+      if(value === "mid"){
+        this.init()
+      }
+    })
   }
 
+  init = () => {
+    gsap.fromTo('.big-row',{
+      y:1000
+    },{
+      y:0,
+      duration:0.8
+    })
+    gsap.fromTo('.big-text-loop-container',{
+      y:1000
+    },{
+      y:0,
+      delay:0.1,
+      duration:0.8
+    })  
+    gsap.fromTo('.app-projects',{
+      y:1000
+    },{
+      y:0,
+      delay:0.2,
+      duration:0.8
+    })
+    gsap.to(".text-reveal",{
+      duration:0.1,
+      top:0
+    })
+    
+  }
+
+  initBigText = () => {
+    GsapUtils.splitText('.big-text-loop-container',"char")
+    const bigTextloopTl = GsapUtils.horizontalLoop(gsap.utils.toArray('.big-text-loop-container > span'),{paused:true,repeat:-1})
+    bigTextloopTl.play()
+    let resetTimer : any
+    const reset = (direction:string,fn:() => void) => {
+      fn()
+      resetTimer = setTimeout((fn) => {
+        bigTextloopTl.timeScale(1.0)[direction]()
+      },250)
+    }
+    gsap.to(".big-text-loop-container",{
+      scrollTrigger:{
+        start:'top top',
+        end:'+=100%',
+        scrub:true,
+        onUpdate:(e) => {
+          clearTimeout(resetTimer)
+          if(e.direction > 0){
+            bigTextloopTl.timeScale(3.0)
+            reset("play",() => bigTextloopTl.play())
+          }else{
+            bigTextloopTl.timeScale(3.0)
+            reset("reverse",() => bigTextloopTl.reverse())
+          }
+        },
+      }
+    })
+  }
+
+  handleMoreWork = () => {
+    this.store.startPageTransition('work',"More Work")
+  }
 }

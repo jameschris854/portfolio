@@ -31,6 +31,21 @@
     <!-- <app-button [buttonColor]="'green'"></app-button> -->
     <div class="placeholder-content" >
       <app-projects [myProjects]="WorkPageService.projectList" [layout]="'list'" [from]="'home'"></app-projects>
+      <div class="work-more-button">
+        <app-button
+        [waveColor]="'#455ce9'"
+        [backgroundColor]="'#ffffff'"
+        [content]="'More Work'" 
+        [uid]="'MOREWORK001'"
+        [width]="'150'"
+        [height]="'50'"
+        [textSize]="'20'"
+        [borderRadius]="'50px'"
+        [borderColor]="'#dfdfdf'"
+        [textColor]="'#1c1d20'"
+        (click)="handleMoreWork()"
+        ></app-button>
+      </div>
     </div>
   </div>
   <app-footer></app-footer>

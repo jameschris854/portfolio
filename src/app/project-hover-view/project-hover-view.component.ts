@@ -15,6 +15,7 @@ export class ProjectHoverViewComponent implements OnInit {
 
   myProjects = WorkPage.ProjectsConstant;
   layoutConstant = WorkPage.Layout;
+  tween: gsap.core.Tween | undefined
 
   constructor(public workPageService: WorkPageService) { }
 
@@ -23,7 +24,8 @@ export class ProjectHoverViewComponent implements OnInit {
       const el = this.workPageService.projectList.find(e => e.uid === data?.uid)
       if(el){
         let index = this.workPageService.projectList.indexOf(el)
-        gsap.to('.view-button-image-container',{
+        this.tween?.kill()
+        this.tween = gsap.to('.view-button-image-container',{
           y:index * -500,
           duration:0.5
         })

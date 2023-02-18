@@ -4,8 +4,9 @@ import { gsap } from "gsap";
 import { WorkPage } from './work-page.constants';
 import { WorkPageService } from './work-page.service';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
 
 @Component({
   selector: 'app-work-page',
@@ -25,6 +26,7 @@ export class WorkPageComponent implements OnInit {
   }
 
   constructor(store: StoreService, public workPageService: WorkPageService) {
+    gsap.to(window,{duration:2,scrollTo:0})
 
     workPageService.layout = "grid"
     this.workPageService.projectList = WorkPage.ProjectsConstant;
@@ -38,7 +40,6 @@ export class WorkPageComponent implements OnInit {
 
   ngOnInit(): void {
    
-    
   }
 
 

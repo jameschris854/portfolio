@@ -20,12 +20,15 @@ export class ButtonComponent{
   @Input() height : string = '300'
   @Input() textSize : string = '15'
   @Input() borderRadius: string = "50%"
-  @Input() textColor: string = "#ffffff"
+  @Input() textColor!: string
   @Input() borderColor: string = "#ffffff1a"
 
-  contentColor = this.textColor
+  contentColor :string = "#ffffff"
 
-  constructor(public store: StoreService) {}
+  constructor(public store: StoreService) {
+    this.contentColor = this.textColor
+    console.log(this.textColor)
+  }
 
   ngAfterViewInit (): void {
     console.log('init button')
@@ -81,19 +84,23 @@ export class ButtonComponent{
       type: `pointer`,
       onHover: () => {
         this.isButtonFocused = true;
-        this.contentColor = "#ffffff"
         gsap.fromTo(
           `.button-wave.${this.uid}`,
           {
             yPercent: 75,
+           
           },
           {
             yPercent: 0,
-          }
+            onStart:(e) => {
+              this.contentColor = "#ffffff"
+            },
+          },
         );
       },
       onHoverEnd: () => {
         this.isButtonFocused = false;
+        this.contentColor=this.textColor
         gsap.to(`.button.${this.uid}`, {
           x: 0,
           y: 0,
@@ -109,8 +116,11 @@ export class ButtonComponent{
         gsap.to(`.button-wave.${this.uid}`, {
           yPercent: -75,
           onUpdate:(e) => {
-            this.contentColor=this.textSize
+            // this.contentColor=this.textColor
           }
+        }).then(() => {
+          this.contentColor=this.textColor
+
         })
       },
     });
