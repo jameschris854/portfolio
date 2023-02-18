@@ -73,7 +73,7 @@ export class HeaderComponent implements OnInit {
   }
 
   handleNameClick = () => {
-    this.route.navigate([''])
+    this.store.startPageTransition('home','Home')
   }
 
   handleMenuClick = (item:typeof this.menuList[0]) => {

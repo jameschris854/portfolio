@@ -32,10 +32,18 @@ export class StoreService {
 
   constructor() { 
     this.pageTransitionChange.subscribe((value) => {
-      this.pageTransition = "start"
+      if(value === "start"){
+        this.pageTransition = "start"
+      }else if(value === "mid"){
+        window.scrollTo(0,0); 
+        gsap.set('.page-loader-wrapper',{
+          background:'unset'
+        })
+      }
     });
     this.pageTransitionTimeline.addLabel("loadPage",1.8)
     this.pageTransitionTimeline.eventCallback("onComplete",(e) => {
+
       this.pageTransitionChange.next("idle")
     })
     this.menuSubject.subscribe((val) => {

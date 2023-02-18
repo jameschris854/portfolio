@@ -57,3 +57,9 @@ export class PageLoaderComponent implements OnInit {
   }
 
 }
+
+export const PageLoaderReset = function (gsap:any) {
+  gsap.set('.page-loader-wrapper',{
+  background:'#141517'
+  })
+}

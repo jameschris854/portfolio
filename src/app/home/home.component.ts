@@ -10,6 +10,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { WorkPage } from '../work-page/work-page.constants';
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { PageLoaderReset } from '../page-loader/page-loader.component';
 
 gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
 
@@ -22,6 +23,7 @@ gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
 export class HomeComponent implements OnInit {
 
   constructor(public store: StoreService, public WorkPageService :WorkPageService) {
+    PageLoaderReset(gsap)
     this.WorkPageService.layout = "list"
     this.WorkPageService.projectList = WorkPage.ProjectsConstant.filter((e,i) => i<=4)
   }
