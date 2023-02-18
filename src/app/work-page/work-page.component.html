@@ -32,16 +32,6 @@
         (click)="handleLayoutChange(item.layout)"
         ></app-button>
     </div>
-    <app-projects [myProjects]="myProjects" [layout]="workPageService.layout"></app-projects>
-    <div class="view-button-wrapper">
-        <div [ngClass]="['view-button-container',getLayoutClass]">
-            <div class="view-button">View</div>
-            <div [ngClass]="['view-button','list']" [ngStyle]="getViewGridButtonStyle">
-                <div [ngClass]="['view-button-image-container']" >
-                    <div *ngFor="let item of myProjects" [ngClass]="['view-button-list-image']" [ngStyle]="{'background-image':'url('+item?.image+')'}" alt=""></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <app-projects [from]="'work'" [myProjects]="workPageService.projectList" [layout]="workPageService.layout"></app-projects>
     <app-footer></app-footer>
 </div>

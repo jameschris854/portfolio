@@ -7,9 +7,10 @@ import { WorkPage } from './work-page.constants';
 })
 export class WorkPageService {
 
+  projectList = WorkPage.ProjectsConstant;
   hoveredProject: typeof WorkPage.ProjectsConstant[0] | undefined;
   hoveredProjectSubject: Subject<typeof this.hoveredProject> = new Subject();
-  layout : 'grid' | 'list' = "grid"
+  layout : 'grid' | 'list' = "grid";
   
   constructor() { 
     this.hoveredProjectSubject.subscribe((e) => {

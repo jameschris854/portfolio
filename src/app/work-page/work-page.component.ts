@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../store.service';
 import { gsap } from "gsap";
-import {Observer} from "gsap/Observer"
 import { WorkPage } from './work-page.constants';
 import { WorkPageService } from './work-page.service';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger,Observer);
+gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-work-page',
@@ -15,7 +14,6 @@ gsap.registerPlugin(ScrollTrigger,Observer);
 })
 export class WorkPageComponent implements OnInit {
 
-  myProjects = WorkPage.ProjectsConstant;
   filters = WorkPage.Filters;
   layoutConstant = WorkPage.Layout;
 
@@ -28,42 +26,21 @@ export class WorkPageComponent implements OnInit {
 
   constructor(store: StoreService, public workPageService: WorkPageService) {
 
+    workPageService.layout = "grid"
+    this.workPageService.projectList = WorkPage.ProjectsConstant;
+
     store.pageTransitionChange.subscribe((value) => {
       if(value === "mid"){
         this.init()
       }
     });
-    setTimeout(() => {
-      this.ViewButtoninit()
-    }, 1000);
    }
 
   ngOnInit(): void {
-    this.workPageService.hoveredProjectSubject.subscribe((data) => {
-      const el = this.myProjects.find(e => e.uid === data?.uid)
-      if(el){
-        let index = this.myProjects.indexOf(el)
-        gsap.to('.view-button-image-container',{
-          y:index * -500,
-          duration:0.5
-        })
-      }
-    })
+   
+    
   }
 
-  ViewButtoninit = () => {
-    Observer.create({target:window,
-      onMove: (e:any) => {
-        if(document.querySelector('.view-button-container')?.getBoundingClientRect()){
-          gsap.to('.view-button-container',{
-            x:e.event.clientX - document.querySelector('.view-button-container')!.getBoundingClientRect().width/2,
-            y:e.event.clientY - document.querySelector('.view-button-container')!.getBoundingClientRect().height/2,
-            stagger:0.1
-          })
-        }
-      }}
-    )
-  }
 
   init(){
     gsap.fromTo('.work-phrase',{
@@ -93,11 +70,11 @@ export class WorkPageComponent implements OnInit {
 
   handleSort = (sort:string) => {
     if(sort === "ALL"){
-      this.myProjects = WorkPage.ProjectsConstant
+      this.workPageService.projectList = WorkPage.ProjectsConstant
     }else if(sort === "FrontEnd"){
-      this.myProjects = WorkPage.ProjectsConstant.filter(e => e.technology !== "backend")
+      this.workPageService.projectList = WorkPage.ProjectsConstant.filter(e => e.technology !== "backend")
     } else if(sort === "Backend"){
-      this.myProjects = WorkPage.ProjectsConstant.filter(e => e.technology !== "Frontend")
+      this.workPageService.projectList = WorkPage.ProjectsConstant.filter(e => e.technology !== "Frontend")
     }
     this.filters = this.filters.map((e) => ({...e,isActive: e.content === sort})) 
   }

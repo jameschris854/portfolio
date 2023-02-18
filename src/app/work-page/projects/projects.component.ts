@@ -13,6 +13,7 @@ export class ProjectsComponent implements OnInit {
 
   @Input() myProjects : any
   @Input() layout! : 'grid' | 'list'
+  @Input() from: 'home' | 'work' = 'work'
 
   constructor() { 
   }

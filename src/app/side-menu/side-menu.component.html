@@ -3,7 +3,7 @@
         <div class="side-menu-title">NAVIGATION</div>
         <div class="side-menu-divider"></div>
         <div class="side-menu-item-container" *ngFor="let item of items">
-            <app-menu-item class="menu-item-wrapper" [uid]="item.id" [content]="item.content"></app-menu-item>
+            <app-menu-item class="menu-item-wrapper" [item]="item" [uid]="item.id" [content]="item.content"></app-menu-item>
         </div>
     </div>
     <div class="side-menu-dead-zone"></div>

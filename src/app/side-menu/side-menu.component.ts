@@ -7,24 +7,29 @@ import { gsap } from "gsap";
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.scss']
 })
+
 export class SideMenuComponent implements OnInit {
 
   items = [
     {
       id: "SM1",
-      content:"Home"
+      content:"Home",
+      route:'home'
     },
     {
       id: "SM2",
-      content:"Work"
+      content:"Work",
+      route:'work'
     },
     {
       id: "SM3",
-      content:"About"
+      content:"About",
+      route:'about'
     },
     {
       id: "SM4",
-      content:"Contact"
+      content:"Contact",
+      route:'contact'
     }
   ]
 
@@ -84,13 +89,16 @@ export class SideMenuComponent implements OnInit {
   }
   
   handleMenuClick = () => {
-    console.log(this.store.isMenuVisible)
     if(this.store.isMenuVisible){
       this.store.hideMenu()
     }else{
       this.store.showMenu()
     }
   }
+}
 
-
+export type menuItem =  {
+  id: string,
+  content:string,
+  route:string
 }

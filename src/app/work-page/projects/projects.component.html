@@ -5,10 +5,10 @@
     <ng-container *ngIf="layout === 'list'">
         <div style="width:80vw">
             <div [ngClass]="['project-item-heading-container']">
-                <div class="project-item-heading">Project</div>
+                <div class="project-item-heading">{{from === "home" ? 'Recent Work' : 'My Projects'}}</div>
                 <div class="project-item-heading2">Module</div>
             </div>
         </div>
-        <app-project-item-list style="width: 80vw;" [item]="item" *ngFor="let item of myProjects" ></app-project-item-list>
+        <app-project-item-list [from]="from" style="width: 80vw;" [item]="item" *ngFor="let item of myProjects" ></app-project-item-list>
     </ng-container>
 </div>

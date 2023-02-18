@@ -1,4 +1,4 @@
-<div [ngClass]="['project-item-container',item.uid]">
-    <div class="project-item-name" [innerHTML]='item.name'></div>
+<div [ngClass]="['project-item-container',item.uid]" [ngStyle]="getContainerStyle">
+    <div class="project-item-name" [innerHTML]='item.name' [ngStyle]="projectNameStyle"></div>
     <div class="project-item-technology" [innerHTML]='item.technology'></div>
 </div>

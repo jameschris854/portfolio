@@ -1,3 +1,4 @@
+import { WorkPageService } from './../work-page/work-page.service';
 import { Router } from '@angular/router';
 // @ts-nocheck
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
@@ -19,11 +20,10 @@ gsap.registerPlugin(ScrollTrigger);
 })
 export class HomeComponent implements OnInit {
 
-  recentWorks : typeof WorkPage.ProjectsConstant = [];
 
-  constructor(public store: StoreService, private router :Router) {
-    this.recentWorks = WorkPage.ProjectsConstant
-    this.recentWorks.length = 5
+  constructor(public store: StoreService, public WorkPageService :WorkPageService) {
+    this.WorkPageService.layout = "list"
+    this.WorkPageService.projectList = WorkPage.ProjectsConstant.filter((e,i) => i<=4)
   }
 
   ngOnInit(): void {

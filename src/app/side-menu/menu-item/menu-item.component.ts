@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { StoreService } from 'src/app/store.service';
 import { gsap } from "gsap";
 import { Observer } from "gsap/Observer";
+import { menuItem } from '../side-menu.component';
 
 gsap.registerPlugin(Observer);
 
@@ -15,6 +16,7 @@ export class MenuItemComponent implements OnInit {
   isButtonFocused: boolean = false;
   @Input() content!: string
   @Input() uid!: string
+  @Input() item!: menuItem
 
   constructor(public store : StoreService) { }
 
@@ -80,6 +82,6 @@ export class MenuItemComponent implements OnInit {
   }
 
   handleClick = () => {
-    this.store.startPageTransition(`${this.uid}`,this.content)
+    this.store.startPageTransition(this.item.route,this.content)
   }
 }

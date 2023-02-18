@@ -30,7 +30,7 @@
     </div>
     <!-- <app-button [buttonColor]="'green'"></app-button> -->
     <div class="placeholder-content" >
-      <app-projects [myProjects]="recentWorks" [layout]="'list'"></app-projects>
+      <app-projects [myProjects]="WorkPageService.projectList" [layout]="'list'" [from]="'home'"></app-projects>
     </div>
   </div>
   <app-footer></app-footer>

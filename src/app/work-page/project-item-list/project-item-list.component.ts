@@ -13,6 +13,7 @@ gsap.registerPlugin(Observer);
 export class ProjectItemListComponent implements OnInit {
 
   @Input() item!: typeof WorkPage.ProjectsConstant[0]
+  @Input() from: 'home' | 'work' = 'work'
 
   constructor(private WorkPageService :WorkPageService) { 
   }
@@ -52,13 +53,36 @@ export class ProjectItemListComponent implements OnInit {
           })
         },
         onHoverEnd:() => {
-          // this.WorkPageService.setHoveredProject(undefined)
           tl.reverse()
           gsap.to('html',{
             cursor:'auto'
           })
         }
       })
+    }
+  }
+
+  get getContainerStyle() {
+    if(this.from === "home"){
+      return {
+        height:'250px'
+      }
+    }else{
+      return {
+        height:'120px'
+      }
+    }
+  }
+
+  get projectNameStyle() {
+    if(this.from === "home"){
+      return {
+        fontSize:'100px'
+      }
+    }else{
+      return {
+        fontSize:'50px'
+      }
     }
   }
 

@@ -44,6 +44,7 @@ export class StoreService {
   }
 
   startPageTransition = (toPage:string,content:string) => {
+    this.hideMenu()
     this.pageTransitionContent = content
     this.pageTransitionTargetPage = toPage
     this.pageTransitionChange.next("start")
