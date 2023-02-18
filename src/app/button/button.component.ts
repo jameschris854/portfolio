@@ -23,6 +23,8 @@ export class ButtonComponent{
   @Input() textColor: string = "#ffffff"
   @Input() borderColor: string = "#ffffff1a"
 
+  contentColor = this.textColor
+
   constructor(public store: StoreService) {}
 
   ngAfterViewInit (): void {
@@ -74,13 +76,12 @@ export class ButtonComponent{
         }
       },
     });
-    const originalTextColor = this.textColor
     Observer.create({
       target: `.button.${this.uid}`,
       type: `pointer`,
       onHover: () => {
         this.isButtonFocused = true;
-        this.textColor = "#ffffff"
+        this.contentColor = "#ffffff"
         gsap.fromTo(
           `.button-wave.${this.uid}`,
           {
@@ -108,7 +109,7 @@ export class ButtonComponent{
         gsap.to(`.button-wave.${this.uid}`, {
           yPercent: -75,
           onUpdate:(e) => {
-            this.textColor=originalTextColor
+            this.contentColor=this.textSize
           }
         })
       },
