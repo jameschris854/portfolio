@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../store.service';
+import { PageUtils } from 'src/utils/pageUtils/page-utils';
 
 @Component({
   selector: 'app-data-sync',
@@ -12,8 +13,8 @@ export class DataSyncComponent implements OnInit {
   constructor(public store:StoreService,private route:Router) { }
 
   ngOnInit(): void {
-    // this.store.startPageTransition('home',"jameschris")
     this.route.navigate(['home'])
+    PageUtils.config({backgroundColor:'#999D9E'})
   }
 
 }

@@ -1,9 +1,6 @@
 .side-menu-wrapper{
-    position: fixed;
     width: 100vw;
     height: 100vh;
-    top: var(--fixed-top);
-    left: var(--fixed-left);
     pointer-events: none;
     z-index: 2;
     .side-menu-dead-zone{

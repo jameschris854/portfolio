@@ -32,15 +32,10 @@ export class FloatingMenuButtonComponent implements OnInit {
   }
 
   init = () => {
-    Observer.create({
-      target:document.body,
-      type:'scroll',
-      onChangeY:(e) => {
-        const relativeTop = document.querySelector('.header-container')?.getBoundingClientRect().top
 
-    // this.store.globalScrollSubject.subscribe((ScrollStatus) => {
-    //   const { offset } = ScrollStatus
-    //   const relativeTop = offset.y
+    this.store.globalScrollSubject.subscribe((ScrollStatus) => {
+      const { offset } = ScrollStatus
+      const relativeTop = offset.y
         if(this.animationInProgress) return
         if(Math.abs(Number(relativeTop)) > 200){
           if(!this.isMenuButtonVisible){
@@ -71,7 +66,6 @@ export class FloatingMenuButtonComponent implements OnInit {
             })
           }
         }
-      }
     })
   }
   

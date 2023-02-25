@@ -5,6 +5,7 @@ import { WorkPage } from './work-page.constants';
 import { WorkPageService } from './work-page.service';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PageLoaderReset } from '../page-loader/page-loader.component';
+import { PageUtils } from 'src/utils/pageUtils/page-utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,6 +27,7 @@ export class WorkPageComponent implements OnInit {
   }
 
   constructor(store: StoreService, public workPageService: WorkPageService) {
+    PageUtils.config({backgroundColor:'#999D9E'})
     PageLoaderReset(gsap)
     workPageService.layout = "grid"
     this.workPageService.projectList = WorkPage.ProjectsConstant;

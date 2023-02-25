@@ -11,6 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { WorkPage } from '../work-page/work-page.constants';
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { PageLoaderReset } from '../page-loader/page-loader.component';
+import { PageUtils } from 'src/utils/pageUtils/page-utils';
 
 gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
 
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
     PageLoaderReset(gsap)
     this.WorkPageService.layout = "list"
     this.WorkPageService.projectList = WorkPage.ProjectsConstant.filter((e,i) => i<=4)
+    PageUtils.config({backgroundColor:'#999D9E'})
   }
 
   ngOnInit(): void {
