@@ -35,8 +35,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    GsapUtils.splitText('.big-text-loop-container', "char")
 
-    this.initBigText()
 
     const container = '.sphere-container';
 
@@ -58,6 +58,7 @@ export class HomeComponent implements OnInit {
         this.init()
       }
     })
+    this.initBigText();
   }
 
   init = () => {
@@ -92,7 +93,6 @@ export class HomeComponent implements OnInit {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-        GsapUtils.splitText('.big-text-loop-container', "char")
         const bigTextloopTl = GsapUtils.horizontalLoop(gsap.utils.toArray('.big-text-loop-container > span'), { paused: true, repeat: -1 })
         bigTextloopTl.play()
       
