@@ -90,22 +90,19 @@ export class HomeComponent implements OnInit {
   }
 
   initBigText = () => {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-        const bigTextloopTl = GsapUtils.horizontalLoop(gsap.utils.toArray('.big-text-loop-container > span'), { paused: true, repeat: -1 })
-        bigTextloopTl.play()
-      
-        let resetTimer: any
-      
-        const reset = (direction: string, fn: () => void) => {
-          fn()
-          resetTimer = setTimeout(() => {
-            bigTextloopTl.timeScale(1.0)[direction]()
-          }, 250)
-        }
-      
-        gsap.to(".big-text-loop-container", {
+    setTimeout(() => {
+
+      const bigTextloopTl = GsapUtils.horizontalLoop(gsap.utils.toArray('.big-text-loop-container > span'), { repeat: -1,paused:true })
+      bigTextloopTl.play()
+      let resetTimer: any
+    
+      const reset = (direction: string, fn: () => void) => {
+        fn()
+        resetTimer = setTimeout(() => {
+          bigTextloopTl.timeScale(1.0)[direction]()
+        }, 250)
+      }
+      gsap.to(".big-text-loop-container", {
           scrollTrigger: {
             start: 'top top',
             end: '+=100%',
@@ -121,10 +118,8 @@ export class HomeComponent implements OnInit {
             },
           }
         })
-      })
-    })
-
-    })
+    },500);
+    
   }
 
   handleMoreWork = () => {
