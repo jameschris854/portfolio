@@ -118,7 +118,7 @@ export class HomeComponent implements OnInit {
             },
           }
         })
-    },500);
+    },1000)
     
   }
 
