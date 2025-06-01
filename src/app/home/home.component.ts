@@ -89,32 +89,41 @@ export class HomeComponent implements OnInit {
   }
 
   initBigText = () => {
-    GsapUtils.splitText('.big-text-loop-container',"char")
-    const bigTextloopTl = GsapUtils.horizontalLoop(gsap.utils.toArray('.big-text-loop-container > span'),{paused:true,repeat:-1})
-    bigTextloopTl.play()
-    let resetTimer : any
-    const reset = (direction:string,fn:() => void) => {
-      fn()
-      resetTimer = setTimeout((fn) => {
-        bigTextloopTl.timeScale(1.0)[direction]()
-      },250)
-    }
-    gsap.to(".big-text-loop-container",{
-      scrollTrigger:{
-        start:'top top',
-        end:'+=100%',
-        scrub:true,
-        onUpdate:(e) => {
-          clearTimeout(resetTimer)
-          if(e.direction > 0){
-            bigTextloopTl.timeScale(3.0)
-            reset("play",() => bigTextloopTl.play())
-          }else{
-            bigTextloopTl.timeScale(3.0)
-            reset("reverse",() => bigTextloopTl.reverse())
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+        GsapUtils.splitText('.big-text-loop-container', "char")
+        const bigTextloopTl = GsapUtils.horizontalLoop(gsap.utils.toArray('.big-text-loop-container > span'), { paused: true, repeat: -1 })
+        bigTextloopTl.play()
+      
+        let resetTimer: any
+      
+        const reset = (direction: string, fn: () => void) => {
+          fn()
+          resetTimer = setTimeout(() => {
+            bigTextloopTl.timeScale(1.0)[direction]()
+          }, 250)
+        }
+      
+        gsap.to(".big-text-loop-container", {
+          scrollTrigger: {
+            start: 'top top',
+            end: '+=100%',
+            scrub: true,
+            onUpdate: (e) => {
+              clearTimeout(resetTimer)
+              bigTextloopTl.timeScale(3.0)
+              if (e.direction > 0) {
+                reset("play", () => bigTextloopTl.play())
+              } else {
+                reset("reverse", () => bigTextloopTl.reverse())
+              }
+            },
           }
-        },
-      }
+        })
+      })
+    })
+
     })
   }
 

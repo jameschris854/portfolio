@@ -18,6 +18,7 @@ import { ProjectItemComponent } from './work-page/project-item/project-item.comp
 import { FooterComponent } from './footer/footer.component';
 import { ProjectItemListComponent } from './work-page/project-item-list/project-item-list.component';
 import { ProjectHoverViewComponent } from './project-hover-view/project-hover-view.component';
+import { HeroImageComponent } from './hero-image/hero-image.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ProjectHoverViewComponent } from './project-hover-view/project-hover-vi
     ProjectItemComponent,
     FooterComponent,
     ProjectItemListComponent,
-    ProjectHoverViewComponent
+    ProjectHoverViewComponent,
+    HeroImageComponent
   ],
   imports: [
     BrowserModule,
